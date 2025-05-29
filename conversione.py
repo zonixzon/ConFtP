@@ -2,7 +2,7 @@ import csv
 import json
 import os
 
-local_file = "MOCK_DATA.csv"
+local_file = "cdr-wimore-in-2023-12-25.csv"
   
   
   # Leggi il CSV e converti in lista di dizionari

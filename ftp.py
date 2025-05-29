@@ -1,13 +1,14 @@
 from ftplib import FTP
 
 # Configura questi parametri
-FTP_HOST = 'ftp.example.com'
-FTP_USER = 'tuo_username'
-FTP_PASS = 'tua_password'
+FTP_HOST = ''
+FTP_USER = 'as6service'
+FTP_PASS = 'wW7T46JtT68Xz59L8p'
 SEARCH_TERM = 'parte_nome_file'  # Cambia con la parte del nome che ti interessa
 
 def main():
     ftp = FTP(FTP_HOST)
+    ftp.connect(FTP_HOST, timeout=30)  # Timeout di 30 secondi
     ftp.login(FTP_USER, FTP_PASS)
     files = ftp.nlst()#fornisce una lista di file nel server ftp
 

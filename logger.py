@@ -1,21 +1,25 @@
+
 import logging
 from datetime import datetime
 
 class CustomFormatter(logging.Formatter):
-    def format(self, record):
-        dt = datetime.fromtimestamp(record.created)
-        date_str = dt.strftime('%Y-%m-%d %H:%M:%S')
-        msg = f"[{date_str}] local.{record.levelname}: {record.getMessage()}"
-        return msg
+    pass  # Non serve ridefinire format se non aggiungi logica extra
 
-def get_logger():
-    logger = logging.getLogger('access_logger')
-    logger.setLevel(logging.INFO)
+def get_logger(name, level=logging.INFO):
+    # Formatta il nome del file con data, ora e livello
+    now = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+    level_name = logging.getLevelName(level).lower()
+    log_filename = f"{now}_local.{level_name}.log"
+
+    logger = logging.getLogger(name)
+    logger.setLevel(level)
+
     if not logger.handlers:
-        ch = logging.StreamHandler()
-        ch.setFormatter(CustomFormatter())
-        logger.addHandler(ch)
+        file_handler = logging.FileHandler(log_filename)
+        file_handler.setLevel(level)
+        formatter = CustomFormatter('[%(asctime)s] local.%(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
+        file_handler.setFormatter(formatter)
+        logger.addHandler(file_handler)
+
     return logger
-
-
 
