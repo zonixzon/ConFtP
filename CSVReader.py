@@ -7,15 +7,6 @@ class CSVReader:
         self.encoding = encoding
         self.delimiter = delimiter
 
-    def rows(self):
-        with open(self.path, newline='', encoding=self.encoding) as file:
-            reader = csv.DictReader(file, delimiter=self.delimiter)
-            for row in reader:
-                #convert all float values with commas to dots
-                for key, value in row.items():
-                    if isinstance(value, str):
-                        row[key] = CSVReader.process_string(value.strip('"'))
-                yield row
 
     def databaseRows(self):
         with open(self.path, newline='', encoding=self.encoding) as file:

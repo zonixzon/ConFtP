@@ -19,3 +19,9 @@ venv/
 # Ignore system files
 .DS_Store
 Thumbs.db
+
+
+# Ignore downloaded files and csv files
+downloaded_files/
+csv_files/
+
