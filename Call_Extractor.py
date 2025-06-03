@@ -1,4 +1,3 @@
-from datetime import datetime
 from DB_connection import get_connection
 
 conn = get_connection()
