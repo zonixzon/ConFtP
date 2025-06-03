@@ -17,11 +17,11 @@ def main():
     try:
         print("Connecting to SFTP server...")
         transport.connect(username=SFTP_USER, password=SFTP_PASS)
-        sftp = paramiko.SFTPClient.from_transport(transport)
+        sftp = paramiko.SFTPClient.from_transport(transport)#crea un client SFTP che si connette al server SFTP usando il trasporto #il metodo from_transport() crea un client SFTP dal trasporto specificato
 
         print(f"Changing to remote directory: {REMOTE_DIR}")
         sftp.chdir(REMOTE_DIR)
-        files = sftp.listdir()
+        files = sftp.listdir()#restituisce una lista di tutti i file nel directory remoto
 
         matching_files = [f for f in files if SEARCH_TERM in f]
 
