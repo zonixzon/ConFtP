@@ -6,8 +6,8 @@ SFTP_HOST = os.getenv("SFTP_HOST")
 SFTP_PORT = int(os.getenv("SFTP_PORT", 22))
 SFTP_USER = os.getenv("SFTP_USER")
 SFTP_PASS = os.getenv("SFTP_PASS")
-REMOTE_DIR = "AS6_cdr/cdr_hourly_out/"
-LOCAL_DIR = "downloaded_files/"
+REMOTE_DIR = "AS6_cdr/cdr_sr/"
+LOCAL_DIR = "downloaded_files/cdr_old"
 SPECIFIC_FILE = os.getenv("SPECIFIC_FILE")  # es: 'cdr-wimore-2023-12-25.csv'
 
 def download_file(sftp, remote_filename, local_dir):

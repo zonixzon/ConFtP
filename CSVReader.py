@@ -1,5 +1,6 @@
 import csv
 import re
+from datetime import datetime
 
 class CSVReader:
     def __init__(self, path, encoding='utf-8', delimiter=','):
@@ -19,6 +20,16 @@ class CSVReader:
                         row[clean_key] = self.process_string(value.strip('"'))
                     else:
                         row[clean_key] = value
+                        
+                ext_call_start = row.get("call_start")
+
+                if ext_call_start:
+                    dt = datetime.strptime(ext_call_start, "%Y-%m-%d-%H-%M-%S")
+                    dt = dt.replace(minute=0, second=0, microsecond=0)
+                    row["reference_file"] = dt.strftime("%Y-%m-%d %H:%M:%S")
+                else :
+                    print("Call start is not available")
+
                 yield row
 
     @staticmethod

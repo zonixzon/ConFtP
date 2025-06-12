@@ -30,7 +30,4 @@ def get_logger(name, level=logging.INFO):
 
     return logger
 
-def dimensione ():
-    filepath = os.path.getsize('csv_files/cdr-wimore-2023-12-25.csv')
-    return filepath
 

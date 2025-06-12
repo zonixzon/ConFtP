@@ -5,7 +5,7 @@ from logging_handler import get_logger
 
 table_name = os.getenv("DB_NAME")
 print(table_name)
-LOCAL_DIR='downloaded_files/'
+LOCAL_DIR='downloaded_files/cdr2024H'
 PREFIX='cdrH-wimore'
 
 
@@ -19,14 +19,17 @@ def insert_file_to_db(filepath,size):
 
             reader = CSVReader(filepath)
             rows = list(reader.databaseRows())  
+            
 
             header = list(rows[0].keys())
+            
 
             # Escapa correttamente i nomi colonna per MySQL (con `backtick`)
             column_string = ", ".join(f"`{col}`" for col in header)
 
             # Prepara i placeholder per il VALUES
             placeholder = ", ".join(["%s"] * len(header))
+
 
             # Crea la query INSERT
             insert_query = f"INSERT INTO {table_name} ({column_string}) VALUES ({placeholder})"
