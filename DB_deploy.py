@@ -5,7 +5,7 @@ from logging_handler import get_logger
 
 table_name = os.getenv("DB_NAME")
 print(table_name)
-LOCAL_DIR='downloaded_files/cdr2024H'
+LOCAL_DIR='downloaded_files/cdr2025H'
 PREFIX='cdrH-wimore'
 
 
