@@ -4,7 +4,6 @@ import os
 from logging_handler import get_logger
 
 table_name = os.getenv("DB_NAME")
-print(table_name)
 LOCAL_DIR='downloaded_files/cdr2025H'
 PREFIX='cdrH-wimore'
 
@@ -14,6 +13,9 @@ def insert_file_to_db(filepath,size):
             # Ottieni la connessione e cursore
             conn = get_connection()
             cursor = conn.cursor()
+
+            print("inserimento dati in :",table_name)
+
 
             logger=get_logger('access_logger')
 
@@ -54,14 +56,15 @@ def insert_file_to_db(filepath,size):
         finally:
              conn.close()
 
-def main():
-    for filename in os.listdir(LOCAL_DIR):#listdir restituisce il nome di tutti i file nella cartella
-        if filename.startswith(PREFIX) and filename.endswith(".csv"):
-            filepath = os.path.join(LOCAL_DIR, filename)
-            size_info =os.path.getsize(filepath)
-            insert_file_to_db(filepath,size_info)
+# scommenta questo se vuoi caricare un intero file di csv (non è piu utilizzabile una volta scaricati file vecchi come quelli del 2024 )
+# def main():
+#     for filename in os.listdir(LOCAL_DIR):#listdir restituisce il nome di tutti i file nella cartella
+#         if filename.startswith(PREFIX) and filename.endswith(".csv"):
+#             filepath = os.path.join(LOCAL_DIR, filename)
+#             size_info =os.path.getsize(filepath)
+#             insert_file_to_db(filepath,size_info)
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()
 
 

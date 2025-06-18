@@ -7,7 +7,10 @@ from datetime import timedelta
 
 
 def Update_Db ():
-
+    #########################################
+    #da sistemare prima di metterlo sul CRON#
+    #########################################
+    
     #conn = get_connection()
     #cursor = conn.cursor()
 
